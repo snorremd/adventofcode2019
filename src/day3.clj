@@ -1,7 +1,6 @@
 (ns day3
   (:require [clojure.edn :as edn]
-            [clojure.string :as string]
-            [clojure.set :refer [intersection]]))
+            [clojure.string :as string]))
 
 
 (defn abs
