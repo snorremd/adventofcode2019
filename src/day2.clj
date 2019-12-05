@@ -21,8 +21,7 @@
   (as-> (slurp "./input/day2.txt") x
     (string/split x #",")
     (mapv read-string x)
-    (assoc x 1 12)
-    (assoc x 2 2)
+    (assoc x 1 12 2 2)
     (int-machine 0 x)
     (first x))
 
@@ -32,12 +31,9 @@
     (mapv read-string res)
     (for [x (range 100) y (range 100)] [res x y])
     (pmap (fn [[memory x y]]
-            [x y
-             (-> memory
-                 (assoc 1 x)
-                 (assoc 2 y)
-                 (#(int-machine 0 %))
-                 first)])
+            [x y (-> (assoc memory 1 x 2 y)
+                     (#(int-machine 0 %))
+                     first)])
           res)
     (drop-while #(not= (get % 2) 19690720) res)
     (first res)
