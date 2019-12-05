@@ -30,7 +30,6 @@
   (as-> (slurp "./input/day2.txt") res
     (string/split res #",")
     (mapv read-string res)
-    (vec res)
     (for [x (range 100) y (range 100)] [res x y])
     (pmap (fn [[memory x y]]
             [x y
